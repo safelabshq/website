@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/utils/constants.dart';
+import 'package:website/widgets/footer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -28,11 +29,7 @@ class _HomePageState extends State<HomePage> {
             width: double.infinity,
             color: kPrimaryBackgroundColor,
           ),
-          Container(
-            height: 100,
-            width: double.infinity,
-            color: kTerciaryBackgroundColor,
-          ),
+          Footer(),
         ],
       ),
     );
