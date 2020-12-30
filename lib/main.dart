@@ -10,7 +10,10 @@ class SafeWebsite extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: HomePage.id,
+      routes: {
+        HomePage.id: (context) => HomePage(),
+      },
     );
   }
 }

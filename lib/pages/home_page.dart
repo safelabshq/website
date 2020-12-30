@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:website/utils/constants.dart';
 import 'package:website/widgets/featureListing.dart';
 import 'package:website/widgets/footer.dart';
 import 'package:website/widgets/hook.dart';
 import 'package:website/widgets/signPrompt.dart';
 
 class HomePage extends StatefulWidget {
+  static String id = 'home_page';
   @override
   _HomePageState createState() => _HomePageState();
 }
