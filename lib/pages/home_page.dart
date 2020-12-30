@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:website/utils/constants.dart';
 import 'package:website/widgets/footer.dart';
+import 'package:website/widgets/signPrompt.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,11 +25,7 @@ class _HomePageState extends State<HomePage> {
             width: double.infinity,
             color: kSecondaryBackgroundColor,
           ),
-          Container(
-            height: 425,
-            width: double.infinity,
-            color: kPrimaryBackgroundColor,
-          ),
+          SignPrompt(),
           Footer(),
         ],
       ),
