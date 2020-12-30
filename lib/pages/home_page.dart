@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:website/utils/constants.dart';
 import 'package:website/widgets/featureListing.dart';
 import 'package:website/widgets/footer.dart';
+import 'package:website/widgets/hook.dart';
 import 'package:website/widgets/signPrompt.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,11 +17,7 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
-          Container(
-            height: 900,
-            width: double.infinity,
-            color: kPrimaryBackgroundColor,
-          ),
+          Hook(),
           FeatureListing(),
           SignPrompt(),
           Footer(),
