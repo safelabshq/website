@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/utils/constants.dart';
+import 'package:website/widgets/navigationIndex.dart';
 
 class NavigationBar extends StatefulWidget {
   @override
@@ -27,33 +28,13 @@ class _NavigationBarState extends State<NavigationBar> {
           Container(
             child: Row(
               children: [
-                Text(
-                  "Home",
-                  style: kNavigationBarText.copyWith(
-                    color: homeTextColor,
-                  ),
-                ),
-                SizedBox(width: 25),
-                Text(
-                  "Twitter",
-                  style: kNavigationBarText.copyWith(
-                    color: twitterTextColor,
-                  ),
-                ),
-                SizedBox(width: 25),
-                Text(
-                  "Press Kit",
-                  style: kNavigationBarText.copyWith(
-                    color: pressTextColor,
-                  ),
-                ),
-                SizedBox(width: 25),
-                Text(
-                  "Join Beta",
-                  style: kNavigationBarText.copyWith(
-                    color: betaTextColor,
-                  ),
-                ),
+                NavigationIndex(text: "Home", color: homeTextColor),
+                SizedBox(width: 5),
+                NavigationIndex(text: "Twitter", color: twitterTextColor),
+                SizedBox(width: 5),
+                NavigationIndex(text: "Press Kit", color: pressTextColor),
+                SizedBox(width: 5),
+                NavigationIndex(text: "Join Beta", color: betaTextColor),
               ],
             ),
           ),
