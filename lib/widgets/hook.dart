@@ -10,9 +10,30 @@ class Hook extends StatelessWidget {
       width: double.infinity,
       color: kPrimaryBackgroundColor,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           NavigationBar(),
+          SizedBox(height: 60),
+          Text(
+            "Meet Safe.",
+            style: TextStyle(
+              color: kRegularTextColor,
+              fontFamily: "SF_Pro_Bold",
+              fontSize: 70,
+            ),
+          ),
+          SizedBox(height: 25),
+          Stack(
+            children: [
+              Text(
+                "A powerful tool for personal and community safety.",
+                style: TextStyle(
+                  fontSize: 33,
+                  fontFamily: "SF_Pro",
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
