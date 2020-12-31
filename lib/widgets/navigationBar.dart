@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:website/pages/home_page.dart';
 import 'package:website/utils/constants.dart';
 import 'package:website/widgets/navigationIndex.dart';
 
@@ -8,11 +10,6 @@ class NavigationBar extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<NavigationBar> {
-  Color homeTextColor = kRegularTextColor;
-  Color twitterTextColor = kRegularTextColor;
-  Color pressTextColor = kRegularTextColor;
-  Color betaTextColor = kRegularTextColor;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,13 +25,34 @@ class _NavigationBarState extends State<NavigationBar> {
           Container(
             child: Row(
               children: [
-                NavigationIndex(text: "Home", color: homeTextColor),
-                SizedBox(width: 5),
-                NavigationIndex(text: "Twitter", color: twitterTextColor),
-                SizedBox(width: 5),
-                NavigationIndex(text: "Press Kit", color: pressTextColor),
-                SizedBox(width: 5),
-                NavigationIndex(text: "Join Beta", color: betaTextColor),
+                NavigationIndex(
+                  text: "Home",
+                  width: 70,
+                  onTap: () {
+                    Navigator.pushNamed(context, HomePage.id);
+                  },
+                ),
+                SizedBox(width: 10),
+                NavigationIndex(
+                  text: "Twitter",
+                  width: 80,
+                  onTap: () async {
+                    launch("https://twitter.com/SafeLabsHQ");
+                  },
+                ),
+                SizedBox(width: 10),
+                NavigationIndex(
+                  text: "Press Kit",
+                  width: 95,
+                ),
+                SizedBox(width: 10),
+                NavigationIndex(
+                  text: "Join Beta",
+                  width: 95,
+                  onTap: () async {
+                    launch("https://registersafebeta.typeform.com/to/jJ7yDJ9T");
+                  },
+                ),
               ],
             ),
           ),
