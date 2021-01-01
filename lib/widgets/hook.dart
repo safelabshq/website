@@ -41,6 +41,7 @@ class Hook extends StatelessWidget {
                   text: "Join Beta",
                   shadowColor: kAccentColor,
                   inactiveColor: kAccentColor,
+                  activeColor: Colors.black,
                 ),
                 SizedBox(width: 38),
                 HookButton(
