@@ -13,7 +13,9 @@ class Hook extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          NavigationBar(),
+          NavigationBar(
+            currentPage: CurrentPage.home,
+          ),
           SizedBox(height: 60),
           Text(
             "Meet Safe.",
@@ -41,13 +43,14 @@ class Hook extends StatelessWidget {
                   text: "Join Beta",
                   shadowColor: kAccentColor,
                   inactiveColor: kAccentColor,
-                  activeColor: Colors.black,
+                  activeColor: Color(0xff99FFE5),
                 ),
                 SizedBox(width: 38),
                 HookButton(
                   text: "View Press Kit",
                   shadowColor: Color(0xff606060),
                   inactiveColor: kTerciaryBackgroundColor,
+                  activeColor: Color(0xffeeeeee),
                 ),
               ],
             ),
