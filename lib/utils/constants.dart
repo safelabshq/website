@@ -20,3 +20,8 @@ const kNavigationBarText = TextStyle(
   fontFamily: "SF_Pro_Semibold",
   fontSize: 16,
 );
+
+const kButtonTextStyle = TextStyle(
+  color: kPrimaryColor,
+  fontFamily: "SF_Pro_Bold",
+);

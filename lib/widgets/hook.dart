@@ -32,17 +32,21 @@ class Hook extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 60),
+            padding: EdgeInsets.symmetric(vertical: 40),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 HookButton(
-                  shadowColor: Color(0xff3B3A3A),
+                  text: "Join Beta",
+                  shadowColor: kAccentColor,
+                  inactiveColor: kAccentColor,
                 ),
                 SizedBox(width: 38),
                 HookButton(
-                  shadowColor: Color(0xff3B3A3A),
+                  text: "View Press Kit",
+                  shadowColor: Color(0xff606060),
+                  inactiveColor: kTerciaryBackgroundColor,
                 ),
               ],
             ),
