@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/utils/constants.dart';
+import 'package:website/widgets/hookButton.dart';
 import 'package:website/widgets/navigationBar.dart';
 
 class Hook extends StatelessWidget {
@@ -23,17 +24,29 @@ class Hook extends StatelessWidget {
             ),
           ),
           SizedBox(height: 25),
-          Stack(
-            children: [
-              Text(
-                "A powerful tool for personal and community safety.",
-                style: TextStyle(
-                  fontSize: 33,
-                  fontFamily: "SF_Pro",
+          Text(
+            "A powerful tool for personal and community safety.",
+            style: TextStyle(
+              fontSize: 33,
+              fontFamily: "SF_Pro",
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 60),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                HookButton(
+                  shadowColor: Color(0xff3B3A3A),
                 ),
-              ),
-            ],
-          )
+                SizedBox(width: 38),
+                HookButton(
+                  shadowColor: Color(0xff3B3A3A),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
