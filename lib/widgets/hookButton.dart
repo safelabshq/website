@@ -17,11 +17,23 @@ class HookButton extends StatefulWidget {
   _HookButtonState createState() => _HookButtonState();
 }
 
-class _HookButtonState extends State<HookButton> {
+class _HookButtonState extends State<HookButton>
+    with SingleTickerProviderStateMixin {
   Color color;
+  AnimationController controller;
+  Animation animation;
 
   @override
   void initState() {
+    // Animation Initialization
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    );
+    animation = ColorTween(begin: widget.inactiveColor, end: widget.activeColor)
+        .animate(controller);
+
+    // State Initialization
     color = widget.inactiveColor;
     super.initState();
   }
@@ -30,7 +42,7 @@ class _HookButtonState extends State<HookButton> {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      width: 150,
+      width: 170,
       child: Center(
         child: Text(
           widget.text,
