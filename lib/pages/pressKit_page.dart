@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:website/services/screenSizeIndicator.dart';
+import 'package:website/utils/constants.dart';
 import 'package:website/widgets/navigationBar.dart';
 
 class PressKitPage extends StatefulWidget {
@@ -31,9 +31,7 @@ class _PressKitPageState extends State<PressKitPage> {
                         Axis.horizontal,
                       ) *
                       0.5,
-                  child: Markdown(
-                    data: "",
-                  ),
+                  child: null,
                 ),
               ],
             ),

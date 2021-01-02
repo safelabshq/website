@@ -29,9 +29,18 @@ class _NavigationBarState extends State<NavigationBar> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset(
-              'assets/images/logo.png',
-              height: 40,
+            GestureDetector(
+              onTap: () {
+                if (widget.currentPage == CurrentPage.home) {
+                  print("already in home page");
+                } else {
+                  Navigator.pushNamed(context, HomePage.id);
+                }
+              },
+              child: Image.asset(
+                'assets/images/logo.png',
+                height: 40,
+              ),
             ),
             Container(
               child: Row(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:website/services/screenSizeIndicator.dart';
 import 'package:website/utils/constants.dart';
 import 'package:website/widgets/hookButton.dart';
 import 'package:website/widgets/navigationBar.dart';
@@ -7,7 +8,6 @@ class Hook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 900,
       width: double.infinity,
       color: kPrimaryBackgroundColor,
       child: Column(
@@ -55,6 +55,15 @@ class Hook extends StatelessWidget {
               ],
             ),
           ),
+          Image.asset(
+            "assets/images/home.webp",
+            width: ScreenSizeIndicator.getScreenSize(
+                  context,
+                  Axis.horizontal,
+                ) *
+                0.7,
+          ),
+          SizedBox(height: 40),
         ],
       ),
     );
