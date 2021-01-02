@@ -80,7 +80,7 @@ class _NavigationBarState extends State<NavigationBar> {
                   NavigationIndex(
                     text: "Join Beta",
                     width: 95,
-                    onTap: () async {
+                    onTap: () {
                       launch(
                           "https://registersafebeta.typeform.com/to/jJ7yDJ9T");
                     },

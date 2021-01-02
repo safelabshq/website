@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:website/pages/pressKit_page.dart';
 import 'package:website/services/screenSizeIndicator.dart';
 import 'package:website/utils/constants.dart';
 import 'package:website/widgets/hookButton.dart';
@@ -40,6 +42,9 @@ class Hook extends StatelessWidget {
                   shadowColor: kAccentColor,
                   inactiveColor: kAccentColor,
                   activeColor: Color(0xff99FFE5),
+                  onTap: () {
+                    launch("https://registersafebeta.typeform.com/to/jJ7yDJ9T");
+                  },
                 ),
                 SizedBox(width: 38),
                 HookButton(
@@ -47,6 +52,9 @@ class Hook extends StatelessWidget {
                   shadowColor: Color(0xff606060),
                   inactiveColor: kTerciaryBackgroundColor,
                   activeColor: Color(0xffeeeeee),
+                  onTap: () {
+                    Navigator.pushNamed(context, PressKitPage.id);
+                  },
                 ),
               ],
             ),
