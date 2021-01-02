@@ -42,7 +42,9 @@ class _FeatureRowState extends State<FeatureRow> {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Image.asset(
-                  extractImage(imageSelected),
+                  extractImage(
+                    imageSelected,
+                  ),
                   height: 700,
                 ),
               ),
