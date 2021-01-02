@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/utils/constants.dart';
+import 'package:website/widgets/featureRow.dart';
 
 class FeatureListing extends StatelessWidget {
   @override
@@ -41,11 +42,7 @@ class FeatureListing extends StatelessWidget {
             ),
           ),
           SizedBox(height: 80),
-          Container(
-            height: 10,
-            width: 10,
-            color: Colors.blue,
-          )
+          FeatureRow()
         ],
       ),
     );
