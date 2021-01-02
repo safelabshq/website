@@ -54,7 +54,6 @@ class _HookButtonState extends State<HookButton> with TickerProviderStateMixin {
 
     controller.addListener(() {
       setState(() {
-        print(active);
         color = animation.value;
       });
     });

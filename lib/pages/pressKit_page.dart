@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:website/services/screenSizeIndicator.dart';
-import 'package:website/utils/constants.dart';
 import 'package:website/widgets/navigationBar.dart';
 
 class PressKitPage extends StatefulWidget {

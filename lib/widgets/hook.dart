@@ -19,11 +19,7 @@ class Hook extends StatelessWidget {
           SizedBox(height: 60),
           Text(
             "Meet Safe.",
-            style: TextStyle(
-              color: kRegularTextColor,
-              fontFamily: "SF_Pro_Bold",
-              fontSize: 70,
-            ),
+            style: kHeader1,
           ),
           SizedBox(height: 25),
           Text(

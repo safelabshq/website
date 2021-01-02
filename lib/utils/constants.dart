@@ -35,6 +35,12 @@ const kNavigationBarText = TextStyle(
   fontWeight: FontWeight.normal,
 );
 
+const kHeader1 = TextStyle(
+  color: kRegularTextColor,
+  fontFamily: "SF_Pro_Bold",
+  fontSize: 70,
+);
+
 const kButtonTextStyle = TextStyle(
   color: kPrimaryColor,
   fontFamily: "SF_Pro_Bold",
