@@ -8,6 +8,13 @@ enum HSector {
   lowersBrightness,
 }
 
+Map<HSector, double> margins = {
+  HSector.trueDocumentation: 0,
+  HSector.notifyContacts: 200,
+  HSector.uploadsCloud: 300,
+  HSector.lowersBrightness: 600,
+};
+
 class FeatureNavBar extends StatefulWidget {
   final HSector start;
   final HSector end;
@@ -25,10 +32,14 @@ class _FeatureNavBarState extends State<FeatureNavBar>
 
   double margin;
   double upperBound;
+  bool isReverse;
   double startHeight;
   double endHeight;
+  double lowerBound;
 
   void initializeValues(HSector start, HSector end) {
+    lowerBound = 0;
+    upperBound = 0;
     switch (end) {
       case HSector.trueDocumentation:
         endHeight = 200;
@@ -46,14 +57,16 @@ class _FeatureNavBarState extends State<FeatureNavBar>
 
     switch (start) {
       case HSector.trueDocumentation:
+        isReverse = false;
         startHeight = 100;
-        margin = 0;
+
+        margin = margins[HSector.trueDocumentation];
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
             break;
           case HSector.notifyContacts:
-            upperBound = 200;
+            upperBound = 100;
             break;
           case HSector.uploadsCloud:
             upperBound = 200;
@@ -64,7 +77,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         }
         break;
       case HSector.notifyContacts:
-        margin = 100;
+        margin = margins[HSector.notifyContacts];
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
@@ -77,7 +90,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         }
         break;
       case HSector.uploadsCloud:
-        margin = 100;
+        margin = margins[HSector.uploadsCloud];
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
@@ -90,7 +103,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         }
         break;
       case HSector.lowersBrightness:
-        margin = 100;
+        margin = margins[HSector.lowersBrightness];
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
@@ -114,6 +127,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
     motionController = AnimationController(
       vsync: this,
       value: margin,
+      lowerBound: lowerBound,
       upperBound: upperBound,
       duration: Duration(milliseconds: 500),
     );
@@ -133,7 +147,9 @@ class _FeatureNavBarState extends State<FeatureNavBar>
 
     motionController.addListener(
       () {
-        setState(() {});
+        setState(() {
+          print(motionController.value);
+        });
       },
     );
 
@@ -162,7 +178,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        motionController.forward();
+        isReverse ? motionController.reverse() : motionController.forward();
         heightController.forward();
       },
       child: SizedBox(

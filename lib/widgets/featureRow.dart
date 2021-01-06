@@ -42,7 +42,7 @@ class _FeatureRowState extends State<FeatureRow> {
                   children: [
                     FeatureNavBar(
                       start: HSector.trueDocumentation,
-                      end: HSector.notifyContacts,
+                      end: HSector.lowersBrightness,
                     ),
                     Column(
                       children: [],
