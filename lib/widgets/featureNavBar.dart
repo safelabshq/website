@@ -12,7 +12,7 @@ Map<HSector, double> margins = {
   HSector.trueDocumentation: 0,
   HSector.notifyContacts: 200,
   HSector.uploadsCloud: 300,
-  HSector.lowersBrightness: 600,
+  HSector.lowersBrightness: 400,
 };
 
 class FeatureNavBar extends StatefulWidget {
@@ -63,56 +63,75 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         margin = margins[HSector.trueDocumentation];
         switch (end) {
           case HSector.trueDocumentation:
-            upperBound = 0;
+            upperBound = margins[HSector.trueDocumentation];
             break;
           case HSector.notifyContacts:
-            upperBound = 100;
+            upperBound = margins[HSector.notifyContacts];
             break;
           case HSector.uploadsCloud:
-            upperBound = 200;
+            upperBound = margins[HSector.uploadsCloud];
             break;
           case HSector.lowersBrightness:
-            upperBound = 300;
+            upperBound = margins[HSector.lowersBrightness];
             break;
         }
         break;
       case HSector.notifyContacts:
+        isReverse = false;
         margin = margins[HSector.notifyContacts];
         switch (end) {
           case HSector.trueDocumentation:
-            upperBound = 0;
+            upperBound = margins[HSector.trueDocumentation];
+            isReverse = true;
             break;
           case HSector.notifyContacts:
+            upperBound = margins[HSector.notifyContacts];
             break;
           case HSector.uploadsCloud:
+            upperBound = margins[HSector.uploadsCloud];
             break;
           case HSector.lowersBrightness:
+            upperBound = margins[HSector.lowersBrightness];
+            break;
         }
         break;
       case HSector.uploadsCloud:
+        isReverse = false;
         margin = margins[HSector.uploadsCloud];
         switch (end) {
           case HSector.trueDocumentation:
-            upperBound = 0;
+            upperBound = margins[HSector.trueDocumentation];
+            isReverse = true;
             break;
           case HSector.notifyContacts:
+            isReverse = true;
+            upperBound = margins[HSector.notifyContacts];
             break;
           case HSector.uploadsCloud:
+            upperBound = margins[HSector.uploadsCloud];
             break;
           case HSector.lowersBrightness:
+            upperBound = margins[HSector.lowersBrightness];
+            break;
         }
         break;
       case HSector.lowersBrightness:
+        isReverse = true;
         margin = margins[HSector.lowersBrightness];
         switch (end) {
           case HSector.trueDocumentation:
-            upperBound = 0;
+            upperBound = margins[HSector.trueDocumentation];
             break;
           case HSector.notifyContacts:
+            upperBound = margins[HSector.notifyContacts];
             break;
           case HSector.uploadsCloud:
+            upperBound = margins[HSector.uploadsCloud];
             break;
           case HSector.lowersBrightness:
+            isReverse = false;
+            upperBound = margins[HSector.lowersBrightness];
+            break;
         }
         break;
     }
