@@ -40,7 +40,10 @@ class _FeatureRowState extends State<FeatureRow> {
                 alignment: Alignment.centerLeft,
                 child: Row(
                   children: [
-                    FeatureNavBar(start: HSector.notifyContacts),
+                    FeatureNavBar(
+                      start: HSector.trueDocumentation,
+                      end: HSector.notifyContacts,
+                    ),
                     Column(
                       children: [],
                     ),
