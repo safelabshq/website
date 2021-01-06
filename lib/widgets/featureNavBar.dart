@@ -19,26 +19,41 @@ class FeatureNavBar extends StatefulWidget {
 }
 
 class _FeatureNavBarState extends State<FeatureNavBar>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  double margin;
-  double value;
-  double upperBound;
+    with TickerProviderStateMixin {
+  AnimationController motionController;
+  AnimationController heightController;
 
-  void initializeValues(
-    HSector start,
-    HSector end,
-  ) {
+  double margin;
+  double upperBound;
+  double startHeight;
+  double endHeight;
+
+  void initializeValues(HSector start, HSector end) {
+    switch (end) {
+      case HSector.trueDocumentation:
+        endHeight = 200;
+        break;
+      case HSector.lowersBrightness:
+        endHeight = 250;
+        break;
+      case HSector.notifyContacts:
+        endHeight = 210;
+        break;
+      case HSector.uploadsCloud:
+        endHeight = 100;
+        break;
+    }
+
     switch (start) {
       case HSector.trueDocumentation:
+        startHeight = 100;
         margin = 0;
-        value = 0;
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
             break;
           case HSector.notifyContacts:
-            upperBound = 9;
+            upperBound = 200;
             break;
           case HSector.uploadsCloud:
             upperBound = 200;
@@ -50,7 +65,6 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         break;
       case HSector.notifyContacts:
         margin = 100;
-        value = 0;
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
@@ -64,7 +78,6 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         break;
       case HSector.uploadsCloud:
         margin = 100;
-        value = 0;
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
@@ -78,7 +91,6 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         break;
       case HSector.lowersBrightness:
         margin = 100;
-        value = 0;
         switch (end) {
           case HSector.trueDocumentation:
             upperBound = 0;
@@ -99,14 +111,27 @@ class _FeatureNavBarState extends State<FeatureNavBar>
     initializeValues(widget.start, widget.end);
 
     // Animation
-    controller = AnimationController(
+    motionController = AnimationController(
       vsync: this,
-      value: value,
+      value: margin,
       upperBound: upperBound,
       duration: Duration(milliseconds: 500),
     );
 
-    controller.addListener(
+    heightController = AnimationController(
+      vsync: this,
+      value: startHeight,
+      upperBound: endHeight,
+      duration: Duration(milliseconds: 500),
+    );
+
+    heightController.addListener(
+      () {
+        setState(() {});
+      },
+    );
+
+    motionController.addListener(
       () {
         setState(() {});
       },
@@ -115,9 +140,21 @@ class _FeatureNavBarState extends State<FeatureNavBar>
     super.initState();
   }
 
+  double getHeight() {
+    if (startHeight < endHeight) {
+      return startHeight > heightController.value
+          ? startHeight
+          : heightController.value;
+    } else {
+      return startHeight < heightController.value
+          ? startHeight
+          : heightController.value;
+    }
+  }
+
   @override
   void dispose() {
-    controller.dispose();
+    motionController.dispose();
     super.dispose();
   }
 
@@ -125,7 +162,8 @@ class _FeatureNavBarState extends State<FeatureNavBar>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        controller.forward();
+        motionController.forward();
+        heightController.forward();
       },
       child: SizedBox(
         width: 7,
@@ -139,8 +177,10 @@ class _FeatureNavBarState extends State<FeatureNavBar>
               ),
             ),
             BarHighlight(
-              height: 100,
-              margin: margin != controller.value ? controller.value : margin,
+              height: getHeight(),
+              margin: margin != motionController.value
+                  ? motionController.value
+                  : margin,
             ),
           ],
         ),
