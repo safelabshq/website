@@ -34,7 +34,31 @@ class _FeatureRowState extends State<FeatureRow> {
         children: [
           Expanded(
             child: Container(
-              child: Align(alignment: Alignment.centerRight, child: null),
+              width: double.infinity,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 7,
+                      height: 570,
+                      child: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Column(
+                      children: [],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           Expanded(
