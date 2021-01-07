@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/widgets/barHighlight.dart';
+import 'package:website/widgets/textIndex.dart';
 
 enum HSector {
   trueDocumentation,
@@ -16,18 +17,13 @@ Map<HSector, double> margins = {
 };
 
 Map<HSector, double> heights = {
-  HSector.trueDocumentation: 100,
+  HSector.trueDocumentation: 105,
   HSector.notifyContacts: 120,
   HSector.uploadsCloud: 125,
-  HSector.lowersBrightness: 40,
+  HSector.lowersBrightness: 100,
 };
 
 class FeatureNavBar extends StatefulWidget {
-  final HSector start;
-  final HSector end;
-
-  FeatureNavBar({@required this.start, @required this.end});
-
   @override
   _FeatureNavBarState createState() => _FeatureNavBarState();
 }
@@ -45,6 +41,18 @@ class _FeatureNavBarState extends State<FeatureNavBar>
   double endHeight;
   double lowerBound = 0;
 
+  bool feat1 = true;
+  bool feat2 = false;
+  bool feat3 = false;
+  bool feat4 = false;
+  bool ovr1 = true;
+  bool ovr2 = false;
+  bool ovr3 = false;
+  bool ovr4 = false;
+
+  HSector onPointer = HSector.trueDocumentation;
+  HSector toPointer = HSector.notifyContacts;
+
   void initializeHeightValues(HSector start, HSector end) {
     switch (start) {
       case HSector.trueDocumentation:
@@ -56,6 +64,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
             break;
           case HSector.lowersBrightness:
             endHeight = heights[HSector.lowersBrightness];
+            isHeightReverse = true;
             break;
           case HSector.notifyContacts:
             endHeight = heights[HSector.notifyContacts];
@@ -212,11 +221,50 @@ class _FeatureNavBarState extends State<FeatureNavBar>
     }
   }
 
+  void initAnimation() {
+    initializeMotionValues(onPointer, toPointer);
+    initializeHeightValues(onPointer, toPointer);
+
+    motionController = AnimationController(
+      vsync: this,
+      value: margin,
+      lowerBound: lowerBound,
+      upperBound: upperBound,
+      duration: Duration(milliseconds: 250),
+    );
+    heightController = AnimationController(
+      vsync: this,
+      lowerBound: isHeightReverse ? endHeight : startHeight,
+      value: startHeight,
+      upperBound: isHeightReverse ? 700 : endHeight,
+      duration: Duration(milliseconds: 250),
+    );
+
+    heightController.addListener(
+      () {
+        setState(() {});
+      },
+    );
+
+    motionController.addListener(
+      () {
+        setState(() {});
+      },
+    );
+
+    isReverse ? motionController.reverse() : motionController.forward();
+    isHeightReverse ? heightController.reverse() : heightController.forward();
+
+    setStateIfMounted(() {
+      onPointer = toPointer;
+    });
+  }
+
   @override
   void initState() {
     // Initialize Values
-    initializeMotionValues(widget.start, widget.end);
-    initializeHeightValues(widget.start, widget.end);
+    initializeMotionValues(HSector.trueDocumentation, HSector.notifyContacts);
+    initializeHeightValues(HSector.trueDocumentation, HSector.notifyContacts);
 
     // Animation
     motionController = AnimationController(
@@ -264,35 +312,192 @@ class _FeatureNavBarState extends State<FeatureNavBar>
   @override
   void dispose() {
     motionController.dispose();
+    heightController.dispose();
     super.dispose();
+  }
+
+  void setStateIfMounted(Function f) {
+    if (mounted) {
+      setState(f);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        isReverse ? motionController.reverse() : motionController.forward();
-        isHeightReverse
-            ? heightController.reverse()
-            : heightController.forward();
-      },
-      child: SizedBox(
-        width: 7,
-        height: 570,
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(10),
+    return Container(
+      height: 570,
+      child: Row(
+        children: [
+          Stack(
+            children: [
+              SizedBox(
+                width: 7,
+                height: 570,
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    BarHighlight(
+                      height: heightController.value,
+                      margin: motionController.value,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(left: 30),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      setStateIfMounted(() {
+                        ovr1 = true;
+                        ovr2 = false;
+                        ovr3 = false;
+                        ovr4 = false;
+                        feat1 = false;
+                        feat2 = false;
+                        feat3 = false;
+                        feat4 = false;
+
+                        toPointer = HSector.trueDocumentation;
+                        initAnimation();
+                      });
+                    },
+                    child: MouseRegion(
+                      onEnter: (PointerEvent _) {
+                        setStateIfMounted(() {
+                          feat1 = true;
+                        });
+                      },
+                      onExit: (PointerEvent _) {
+                        setStateIfMounted(() {
+                          feat1 = false;
+                        });
+                      },
+                      child: TextIndex(
+                        width: 350,
+                        index: 0,
+                        isActive: ovr1 ? ovr1 : feat1,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setStateIfMounted(() {
+                        ovr1 = false;
+                        ovr2 = true;
+                        ovr3 = false;
+                        ovr4 = false;
+                        feat1 = false;
+                        feat2 = false;
+                        feat3 = false;
+                        feat4 = false;
+
+                        toPointer = HSector.notifyContacts;
+                        initAnimation();
+                      });
+                    },
+                    child: MouseRegion(
+                      onEnter: (PointerEvent _) {
+                        setStateIfMounted(() {
+                          feat2 = true;
+                        });
+                      },
+                      onExit: (PointerEvent _) {
+                        setStateIfMounted(() {
+                          feat2 = false;
+                        });
+                      },
+                      child: TextIndex(
+                        width: 400,
+                        index: 1,
+                        isActive: ovr2 ? ovr2 : feat2,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setStateIfMounted(() {
+                        ovr1 = false;
+                        ovr2 = false;
+                        ovr3 = true;
+                        ovr4 = false;
+                        feat1 = false;
+                        feat2 = false;
+                        feat3 = false;
+                        feat4 = false;
+
+                        toPointer = HSector.uploadsCloud;
+                        initAnimation();
+                      });
+                    },
+                    child: MouseRegion(
+                      onEnter: (PointerEvent _) {
+                        setStateIfMounted(() {
+                          feat3 = true;
+                        });
+                      },
+                      onExit: (PointerEvent _) {
+                        setState(() {
+                          feat3 = false;
+                        });
+                      },
+                      child: TextIndex(
+                        width: 350,
+                        index: 2,
+                        isActive: ovr3 ? ovr3 : feat3,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setStateIfMounted(() {
+                        ovr1 = false;
+                        ovr2 = false;
+                        ovr3 = false;
+                        ovr4 = true;
+                        feat1 = false;
+                        feat2 = false;
+                        feat3 = false;
+                        feat4 = false;
+
+                        toPointer = HSector.lowersBrightness;
+                        initAnimation();
+                      });
+                    },
+                    child: MouseRegion(
+                      onEnter: (PointerEvent _) {
+                        setStateIfMounted(() {
+                          feat4 = true;
+                        });
+                      },
+                      onExit: (PointerEvent _) {
+                        setStateIfMounted(() {
+                          feat4 = false;
+                        });
+                      },
+                      child: TextIndex(
+                        width: 350,
+                        index: 3,
+                        isActive: ovr4 ? ovr4 : feat4,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            BarHighlight(
-              height: heightController.value,
-              margin: motionController.value,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

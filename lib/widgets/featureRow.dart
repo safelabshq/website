@@ -53,146 +53,143 @@ class _FeatureRowState extends State<FeatureRow> {
               width: double.infinity,
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Row(
+                child: Stack(
                   children: [
-                    FeatureNavBar(
-                      start: HSector.lowersBrightness,
-                      end: HSector.trueDocumentation,
-                    ),
-                    SizedBox(width: 30),
-                    SizedBox(
-                      height: 570,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setStateIfMounted(() {
-                                ovr1 = true;
-                                ovr2 = false;
-                                ovr3 = false;
-                                ovr4 = false;
-                                feat1 = false;
-                                feat2 = false;
-                                feat3 = false;
-                                feat4 = false;
-                              });
-                            },
-                            child: MouseRegion(
-                              onEnter: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat1 = true;
-                                });
-                              },
-                              onExit: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat1 = false;
-                                });
-                              },
-                              child: TextIndex(
-                                width: 350,
-                                index: 0,
-                                isActive: ovr1 ? ovr1 : feat1,
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setStateIfMounted(() {
-                                ovr1 = false;
-                                ovr2 = true;
-                                ovr3 = false;
-                                ovr4 = false;
-                                feat1 = false;
-                                feat2 = false;
-                                feat3 = false;
-                                feat4 = false;
-                              });
-                            },
-                            child: MouseRegion(
-                              onEnter: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat2 = true;
-                                });
-                              },
-                              onExit: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat2 = false;
-                                });
-                              },
-                              child: TextIndex(
-                                width: 400,
-                                index: 1,
-                                isActive: ovr2 ? ovr2 : feat2,
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setStateIfMounted(() {
-                                ovr1 = false;
-                                ovr2 = false;
-                                ovr3 = true;
-                                ovr4 = false;
-                                feat1 = false;
-                                feat2 = false;
-                                feat3 = false;
-                                feat4 = false;
-                              });
-                            },
-                            child: MouseRegion(
-                              onEnter: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat3 = true;
-                                });
-                              },
-                              onExit: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat3 = false;
-                                });
-                              },
-                              child: TextIndex(
-                                width: 350,
-                                index: 2,
-                                isActive: ovr3 ? ovr3 : feat3,
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              setStateIfMounted(() {
-                                ovr1 = false;
-                                ovr2 = false;
-                                ovr3 = false;
-                                ovr4 = true;
-                                feat1 = false;
-                                feat2 = false;
-                                feat3 = false;
-                                feat4 = false;
-                              });
-                            },
-                            child: MouseRegion(
-                              onEnter: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat4 = true;
-                                });
-                              },
-                              onExit: (PointerEvent _) {
-                                setStateIfMounted(() {
-                                  feat4 = false;
-                                });
-                              },
-                              child: TextIndex(
-                                width: 350,
-                                index: 3,
-                                isActive: ovr4 ? ovr4 : feat4,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Container(
+                    //   padding: EdgeInsets.only(left: 37),
+                    //   height: 570,
+                    //   child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       GestureDetector(
+                    //         onTap: () {
+                    //           setStateIfMounted(() {
+                    //             ovr1 = true;
+                    //             ovr2 = false;
+                    //             ovr3 = false;
+                    //             ovr4 = false;
+                    //             feat1 = false;
+                    //             feat2 = false;
+                    //             feat3 = false;
+                    //             feat4 = false;
+                    //           });
+                    //         },
+                    //         child: MouseRegion(
+                    //           onEnter: (PointerEvent _) {
+                    //             setStateIfMounted(() {
+                    //               feat1 = true;
+                    //             });
+                    //           },
+                    //           onExit: (PointerEvent _) {
+                    //             setStateIfMounted(() {
+                    //               feat1 = false;
+                    //             });
+                    //           },
+                    //           child: TextIndex(
+                    //             width: 350,
+                    //             index: 0,
+                    //             isActive: ovr1 ? ovr1 : feat1,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       GestureDetector(
+                    //         onTap: () {
+                    //           setStateIfMounted(() {
+                    //             ovr1 = false;
+                    //             ovr2 = true;
+                    //             ovr3 = false;
+                    //             ovr4 = false;
+                    //             feat1 = false;
+                    //             feat2 = false;
+                    //             feat3 = false;
+                    //             feat4 = false;
+                    //           });
+                    //         },
+                    //         child: MouseRegion(
+                    //           onEnter: (PointerEvent _) {
+                    //             setStateIfMounted(() {
+                    //               feat2 = true;
+                    //             });
+                    //           },
+                    //           onExit: (PointerEvent _) {
+                    //             setStateIfMounted(() {
+                    //               feat2 = false;
+                    //             });
+                    //           },
+                    //           child: TextIndex(
+                    //             width: 400,
+                    //             index: 1,
+                    //             isActive: ovr2 ? ovr2 : feat2,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       GestureDetector(
+                    //         onTap: () {
+                    //           setStateIfMounted(() {
+                    //             ovr1 = false;
+                    //             ovr2 = false;
+                    //             ovr3 = true;
+                    //             ovr4 = false;
+                    //             feat1 = false;
+                    //             feat2 = false;
+                    //             feat3 = false;
+                    //             feat4 = false;
+                    //           });
+                    //         },
+                    //         child: MouseRegion(
+                    //           onEnter: (PointerEvent _) {
+                    //             setStateIfMounted(() {
+                    //               feat3 = true;
+                    //             });
+                    //           },
+                    //           onExit: (PointerEvent _) {
+                    //             setState(() {
+                    //               feat3 = false;
+                    //             });
+                    //           },
+                    //           child: TextIndex(
+                    //             width: 350,
+                    //             index: 2,
+                    //             isActive: ovr3 ? ovr3 : feat3,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       GestureDetector(
+                    //         onTap: () {
+                    //           setStateIfMounted(() {
+                    //             ovr1 = false;
+                    //             ovr2 = false;
+                    //             ovr3 = false;
+                    //             ovr4 = true;
+                    //             feat1 = false;
+                    //             feat2 = false;
+                    //             feat3 = false;
+                    //             feat4 = false;
+                    //           });
+                    //         },
+                    //         child: MouseRegion(
+                    //           onEnter: (PointerEvent _) {
+                    //             setStateIfMounted(() {
+                    //               feat4 = true;
+                    //             });
+                    //           },
+                    //           onExit: (PointerEvent _) {
+                    //             setStateIfMounted(() {
+                    //               feat4 = false;
+                    //             });
+                    //           },
+                    //           child: TextIndex(
+                    //             width: 350,
+                    //             index: 3,
+                    //             isActive: ovr4 ? ovr4 : feat4,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    FeatureNavBar(),
                   ],
                 ),
               ),
