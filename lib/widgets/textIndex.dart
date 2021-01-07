@@ -1,32 +1,43 @@
 import 'package:flutter/material.dart';
 
 class TextIndex extends StatelessWidget {
+  final bool isActive;
+  final List<String> message;
+  final double width;
+
+  TextIndex({
+    @required this.isActive,
+    @required this.message,
+    @required this.width,
+  });
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "True Documentation",
-          style: TextStyle(
-            color: Color(0xff232323),
-            fontSize: 27,
-            letterSpacing: 0.3,
-            fontFamily: "SF_Pro_Bold",
-            fontWeight: FontWeight.bold,
+    return SizedBox(
+      width: width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            message[0],
+            style: TextStyle(
+              color: isActive ? Color(0xffb5b5b5) : Color(0xff232323),
+              fontSize: 27,
+              letterSpacing: -0.5,
+              fontFamily: "SF_Pro_Bold",
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        SizedBox(height: 10),
-        Text(
-          "Both front and back camera will automatically start recording. Your exact location will also be documented.",
-          style: TextStyle(
-            color: Color(0xff232323),
-            fontSize: 15,
-            letterSpacing: 0.3,
-            fontFamily: "SF_Pro",
+          SizedBox(height: 10),
+          Text(
+            message[1],
+            style: TextStyle(
+              color: isActive ? Color(0xffb5b5b5) : Color(0xff232323),
+              fontSize: 18,
+              fontFamily: "SF_Pro",
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
