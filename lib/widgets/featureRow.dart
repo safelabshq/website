@@ -398,6 +398,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
+                                        imageSelected = ProductImage.incident;
 
                                         toPointer = HSector.trueDocumentation;
                                         initAnimation();
@@ -432,6 +433,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
+                                        imageSelected = ProductImage.profile;
 
                                         toPointer = HSector.notifyContacts;
                                         initAnimation();
@@ -466,6 +468,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
+                                        imageSelected = ProductImage.vault;
 
                                         toPointer = HSector.uploadsCloud;
                                         initAnimation();
@@ -500,6 +503,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
+                                        imageSelected = ProductImage.brightness;
 
                                         toPointer = HSector.lowersBrightness;
                                         initAnimation();
