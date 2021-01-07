@@ -53,35 +53,23 @@ class _FeatureRowState extends State<FeatureRow> {
                         children: [
                           TextIndex(
                             width: 350,
+                            index: 0,
                             isActive: true,
-                            message: [
-                              "True Documentation",
-                              "Both front and back camera will automatically start recording. Your exact location will also be documented."
-                            ],
                           ),
                           TextIndex(
                             width: 350,
+                            index: 1,
                             isActive: true,
-                            message: [
-                              "True Documentation",
-                              "Both front and back camera will automatically start recording. Your exact location will also be documented."
-                            ],
                           ),
                           TextIndex(
                             width: 350,
+                            index: 2,
                             isActive: true,
-                            message: [
-                              "True Documentation",
-                              "Both front and back camera will automatically start recording. Your exact location will also be documented."
-                            ],
                           ),
                           TextIndex(
                             width: 350,
+                            index: 3,
                             isActive: true,
-                            message: [
-                              "True Documentation",
-                              "Both front and back camera will automatically start recording. Your exact location will also be documented."
-                            ],
                           ),
                         ],
                       ),
