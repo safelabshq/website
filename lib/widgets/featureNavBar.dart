@@ -10,9 +10,9 @@ enum HSector {
 
 Map<HSector, double> margins = {
   HSector.trueDocumentation: 0,
-  HSector.notifyContacts: 200,
-  HSector.uploadsCloud: 3000,
-  HSector.lowersBrightness: 500,
+  HSector.notifyContacts: 140,
+  HSector.uploadsCloud: 305,
+  HSector.lowersBrightness: 470,
 };
 
 class FeatureNavBar extends StatefulWidget {
@@ -35,15 +35,15 @@ class _FeatureNavBarState extends State<FeatureNavBar>
   bool isReverse;
   double startHeight;
   double endHeight;
-  double lowerBound;
+  double lowerBound = 0;
 
   void initializeValues(HSector start, HSector end) {
     switch (end) {
       case HSector.trueDocumentation:
-        endHeight = 200;
+        endHeight = 350;
         break;
       case HSector.lowersBrightness:
-        endHeight = 250;
+        endHeight = 400;
         break;
       case HSector.notifyContacts:
         endHeight = 210;
