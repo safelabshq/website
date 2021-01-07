@@ -11,10 +11,9 @@ enum HSector {
 }
 
 enum ProductImage {
-  brightness,
-  profile,
-  incident,
-  vault,
+  homeScreen,
+  incidentScreen,
+  vaultScreen,
 }
 
 Map<HSector, double> margins = {
@@ -47,7 +46,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
   double startHeight;
   double endHeight;
   double lowerBound = 0;
-  ProductImage imageSelected = ProductImage.incident;
+  ProductImage imageSelected = ProductImage.homeScreen;
 
   bool feat1 = true;
   bool feat2 = false;
@@ -337,7 +336,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
         pointer += asset.toString()[i];
       }
     }
-    return "assets/images/$pointer.webp";
+    return "assets/images/$pointer.png";
   }
 
   @override
@@ -398,7 +397,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
-                                        imageSelected = ProductImage.incident;
+                                        imageSelected = ProductImage.homeScreen;
 
                                         toPointer = HSector.trueDocumentation;
                                         initAnimation();
@@ -433,7 +432,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
-                                        imageSelected = ProductImage.profile;
+                                        imageSelected = ProductImage.homeScreen;
 
                                         toPointer = HSector.notifyContacts;
                                         initAnimation();
@@ -468,7 +467,8 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
-                                        imageSelected = ProductImage.vault;
+                                        imageSelected =
+                                            ProductImage.incidentScreen;
 
                                         toPointer = HSector.uploadsCloud;
                                         initAnimation();
@@ -503,7 +503,8 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
-                                        imageSelected = ProductImage.brightness;
+                                        imageSelected =
+                                            ProductImage.vaultScreen;
 
                                         toPointer = HSector.lowersBrightness;
                                         initAnimation();
