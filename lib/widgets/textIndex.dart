@@ -37,52 +37,50 @@ class _TextIndexState extends State<TextIndex> {
     super.initState();
   }
 
+  void setStateIfMounted(Function f) {
+    if (mounted) {
+      setState(f);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     active = !widget.isActive;
     fetchData().then(
       (e) => {
-        setState(() {
+        setStateIfMounted(() {
           header = e["header"];
           message = e["message"];
         })
       },
     );
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          active = false;
-        });
-        print(active);
-      },
-      child: SizedBox(
-        width: widget.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              header,
-              style: TextStyle(
-                color: active ? Color(0xffb5b5b5) : Color(0xff232323),
-                fontSize: 27,
-                letterSpacing: -0.5,
-                fontFamily: "SF_Pro_Bold",
-                fontWeight: FontWeight.bold,
-              ),
-              maxLines: 1,
+    return SizedBox(
+      width: widget.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            header,
+            style: TextStyle(
+              color: active ? Color(0xffb5b5b5) : Color(0xff232323),
+              fontSize: 27,
+              letterSpacing: -0.5,
+              fontFamily: "SF_Pro_Bold",
+              fontWeight: FontWeight.bold,
             ),
-            SizedBox(height: 10),
-            Text(
-              message,
-              style: TextStyle(
-                color: active ? Color(0xffb5b5b5) : Color(0xff232323),
-                fontSize: 18,
-                fontFamily: "SF_Pro",
-              ),
-              maxLines: 5,
+            maxLines: 1,
+          ),
+          SizedBox(height: 10),
+          Text(
+            message,
+            style: TextStyle(
+              color: active ? Color(0xffb5b5b5) : Color(0xff232323),
+              fontSize: 18,
+              fontFamily: "SF_Pro",
             ),
-          ],
-        ),
+            maxLines: 5,
+          ),
+        ],
       ),
     );
   }
