@@ -21,14 +21,15 @@ class TextIndex extends StatefulWidget {
 class _TextIndexState extends State<TextIndex> {
   String header = "fetching";
   String message = "fetching";
+  bool active;
 
-  void fetchData() async {
+  Future<Map<String, String>> fetchData() async {
     String json = await rootBundle.loadString("json/features.json");
 
-    setState(() {
-      header = jsonDecode(json)["data"][widget.index]["header"];
-      message = jsonDecode(json)["data"][widget.index]["message"];
-    });
+    return {
+      "header": jsonDecode(json)["data"][widget.index]["header"],
+      "message": jsonDecode(json)["data"][widget.index]["message"],
+    };
   }
 
   @override
@@ -38,32 +39,50 @@ class _TextIndexState extends State<TextIndex> {
 
   @override
   Widget build(BuildContext context) {
-    fetchData();
-    return SizedBox(
-      width: widget.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            header,
-            style: TextStyle(
-              color: widget.isActive ? Color(0xffb5b5b5) : Color(0xff232323),
-              fontSize: 27,
-              letterSpacing: -0.5,
-              fontFamily: "SF_Pro_Bold",
-              fontWeight: FontWeight.bold,
+    active = !widget.isActive;
+    fetchData().then(
+      (e) => {
+        setState(() {
+          header = e["header"];
+          message = e["message"];
+        })
+      },
+    );
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          active = false;
+        });
+        print(active);
+      },
+      child: SizedBox(
+        width: widget.width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              header,
+              style: TextStyle(
+                color: active ? Color(0xffb5b5b5) : Color(0xff232323),
+                fontSize: 27,
+                letterSpacing: -0.5,
+                fontFamily: "SF_Pro_Bold",
+                fontWeight: FontWeight.bold,
+              ),
+              maxLines: 1,
             ),
-          ),
-          SizedBox(height: 10),
-          Text(
-            message,
-            style: TextStyle(
-              color: widget.isActive ? Color(0xffb5b5b5) : Color(0xff232323),
-              fontSize: 18,
-              fontFamily: "SF_Pro",
+            SizedBox(height: 10),
+            Text(
+              message,
+              style: TextStyle(
+                color: active ? Color(0xffb5b5b5) : Color(0xff232323),
+                fontSize: 18,
+                fontFamily: "SF_Pro",
+              ),
+              maxLines: 5,
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

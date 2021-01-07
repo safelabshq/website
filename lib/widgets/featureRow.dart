@@ -17,6 +17,10 @@ class FeatureRow extends StatefulWidget {
 
 class _FeatureRowState extends State<FeatureRow> {
   ProductImage imageSelected = ProductImage.profile;
+  bool feat1 = true;
+  bool feat2 = false;
+  bool feat3 = false;
+  bool feat4 = false;
 
   String extractImage(ProductImage asset) {
     String pointer = "";
@@ -50,26 +54,75 @@ class _FeatureRowState extends State<FeatureRow> {
                       height: 570,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextIndex(
-                            width: 350,
-                            index: 0,
-                            isActive: true,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                feat1 = true;
+                                feat2 = false;
+                                feat3 = false;
+                                feat4 = false;
+                              });
+                            },
+                            child: MouseRegion(
+                              child: TextIndex(
+                                width: 350,
+                                index: 0,
+                                isActive: feat1,
+                              ),
+                            ),
                           ),
-                          TextIndex(
-                            width: 350,
-                            index: 1,
-                            isActive: true,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                feat1 = false;
+                                feat2 = true;
+                                feat3 = false;
+                                feat4 = false;
+                              });
+                            },
+                            child: MouseRegion(
+                              child: TextIndex(
+                                width: 400,
+                                index: 1,
+                                isActive: feat2,
+                              ),
+                            ),
                           ),
-                          TextIndex(
-                            width: 350,
-                            index: 2,
-                            isActive: true,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                feat1 = false;
+                                feat2 = false;
+                                feat3 = true;
+                                feat4 = false;
+                              });
+                            },
+                            child: MouseRegion(
+                              child: TextIndex(
+                                width: 350,
+                                index: 2,
+                                isActive: feat3,
+                              ),
+                            ),
                           ),
-                          TextIndex(
-                            width: 350,
-                            index: 3,
-                            isActive: true,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                feat1 = false;
+                                feat2 = false;
+                                feat3 = false;
+                                feat4 = true;
+                              });
+                            },
+                            child: MouseRegion(
+                              child: TextIndex(
+                                width: 350,
+                                index: 3,
+                                isActive: feat4,
+                              ),
+                            ),
                           ),
                         ],
                       ),
