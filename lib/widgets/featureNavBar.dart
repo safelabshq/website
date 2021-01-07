@@ -11,8 +11,8 @@ enum HSector {
 Map<HSector, double> margins = {
   HSector.trueDocumentation: 0,
   HSector.notifyContacts: 200,
-  HSector.uploadsCloud: 300,
-  HSector.lowersBrightness: 400,
+  HSector.uploadsCloud: 3000,
+  HSector.lowersBrightness: 500,
 };
 
 class FeatureNavBar extends StatefulWidget {
@@ -31,15 +31,13 @@ class _FeatureNavBarState extends State<FeatureNavBar>
   AnimationController heightController;
 
   double margin;
-  double upperBound;
+  double upperBound = 700;
   bool isReverse;
   double startHeight;
   double endHeight;
   double lowerBound;
 
   void initializeValues(HSector start, HSector end) {
-    lowerBound = 0;
-    upperBound = 0;
     switch (end) {
       case HSector.trueDocumentation:
         endHeight = 200;
@@ -57,6 +55,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
 
     switch (start) {
       case HSector.trueDocumentation:
+        print(1);
         isReverse = false;
         startHeight = 100;
 
@@ -77,11 +76,13 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         }
         break;
       case HSector.notifyContacts:
+        print(2);
         isReverse = false;
+        startHeight = 100;
         margin = margins[HSector.notifyContacts];
         switch (end) {
           case HSector.trueDocumentation:
-            upperBound = margins[HSector.trueDocumentation];
+            lowerBound = margins[HSector.trueDocumentation];
             isReverse = true;
             break;
           case HSector.notifyContacts:
@@ -96,16 +97,18 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         }
         break;
       case HSector.uploadsCloud:
+        print(3);
         isReverse = false;
+        startHeight = 100;
         margin = margins[HSector.uploadsCloud];
         switch (end) {
           case HSector.trueDocumentation:
-            upperBound = margins[HSector.trueDocumentation];
+            lowerBound = margins[HSector.trueDocumentation];
             isReverse = true;
             break;
           case HSector.notifyContacts:
             isReverse = true;
-            upperBound = margins[HSector.notifyContacts];
+            lowerBound = margins[HSector.notifyContacts];
             break;
           case HSector.uploadsCloud:
             upperBound = margins[HSector.uploadsCloud];
@@ -116,17 +119,19 @@ class _FeatureNavBarState extends State<FeatureNavBar>
         }
         break;
       case HSector.lowersBrightness:
+        print(4);
         isReverse = true;
+        startHeight = 100;
         margin = margins[HSector.lowersBrightness];
         switch (end) {
           case HSector.trueDocumentation:
-            upperBound = margins[HSector.trueDocumentation];
+            lowerBound = margins[HSector.trueDocumentation];
             break;
           case HSector.notifyContacts:
-            upperBound = margins[HSector.notifyContacts];
+            lowerBound = margins[HSector.notifyContacts];
             break;
           case HSector.uploadsCloud:
-            upperBound = margins[HSector.uploadsCloud];
+            lowerBound = margins[HSector.uploadsCloud];
             break;
           case HSector.lowersBrightness:
             isReverse = false;
@@ -197,8 +202,9 @@ class _FeatureNavBarState extends State<FeatureNavBar>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        print("here");
         isReverse ? motionController.reverse() : motionController.forward();
-        heightController.forward();
+        // heightController.forward();
       },
       child: SizedBox(
         width: 7,
@@ -213,9 +219,7 @@ class _FeatureNavBarState extends State<FeatureNavBar>
             ),
             BarHighlight(
               height: getHeight(),
-              margin: margin != motionController.value
-                  ? motionController.value
-                  : margin,
+              margin: motionController.value,
             ),
           ],
         ),

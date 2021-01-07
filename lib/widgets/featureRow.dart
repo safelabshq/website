@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:website/services/screenSizeIndicator.dart';
 import 'package:website/widgets/featureNavBar.dart';
+import 'package:website/widgets/textIndex.dart';
 
 enum ProductImage {
   brightness,
@@ -41,11 +42,18 @@ class _FeatureRowState extends State<FeatureRow> {
                 child: Row(
                   children: [
                     FeatureNavBar(
-                      start: HSector.trueDocumentation,
-                      end: HSector.lowersBrightness,
+                      start: HSector.lowersBrightness,
+                      end: HSector.trueDocumentation,
                     ),
+                    SizedBox(width: 30),
                     Column(
-                      children: [],
+                      children: [
+                        Container(
+                          height: 150,
+                          width: 400,
+                          child: TextIndex(),
+                        ),
+                      ],
                     ),
                   ],
                 ),
