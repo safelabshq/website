@@ -56,8 +56,8 @@ class _FeatureRowState extends State<FeatureRow> {
                 child: Row(
                   children: [
                     FeatureNavBar(
-                      start: HSector.trueDocumentation,
-                      end: HSector.lowersBrightness,
+                      start: HSector.lowersBrightness,
+                      end: HSector.trueDocumentation,
                     ),
                     SizedBox(width: 30),
                     SizedBox(
