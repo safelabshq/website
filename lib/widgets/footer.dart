@@ -12,12 +12,24 @@ class Footer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "mark@safelabs.app | Built and maintained with love by the Safe team in San Jose.",
+            "mark@safelabs.app | Built and maintained with ",
             style: TextStyle(
               fontFamily: "SF_Pro",
               fontSize: 17,
             ),
-          )
+          ),
+          Image.asset(
+            "assets/images/heart.png",
+            height: 17,
+            width: 17,
+          ),
+          Text(
+            " by the Safe team in San Jose.",
+            style: TextStyle(
+              fontFamily: "SF_Pro",
+              fontSize: 17,
+            ),
+          ),
         ],
       ),
     );
