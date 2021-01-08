@@ -60,3 +60,6 @@ flutter:
     - family: SF_Pro_Bold
       fonts:
         - asset: assets/fonts/bold.ttf
+    - family: Emoji
+      fonts:
+        - asset: assets/fonts/emoji.ttf

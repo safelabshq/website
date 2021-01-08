@@ -7,7 +7,7 @@ class SignPrompt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 425,
+      height: 350,
       width: double.infinity,
       color: kPrimaryBackgroundColor,
       child: Column(
