@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:website/services/screenSizeIndicator.dart';
 import 'package:website/utils/constants.dart';
 import 'package:website/widgets/featureRow.dart';
 
@@ -40,7 +41,10 @@ class FeatureListing extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 80),
+          SizedBox(
+            height: ScreenSizeIndicator.getScreenSize(context, Axis.vertical) *
+                0.07,
+          ),
           FeatureRow()
         ],
       ),

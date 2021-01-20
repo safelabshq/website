@@ -12,6 +12,7 @@ enum HSector {
 
 enum ProductImage {
   homeScreen,
+  profileScreen,
   incidentScreen,
   vaultScreen,
 }
@@ -432,7 +433,8 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                         feat2 = false;
                                         feat3 = false;
                                         feat4 = false;
-                                        imageSelected = ProductImage.homeScreen;
+                                        imageSelected =
+                                            ProductImage.profileScreen;
 
                                         toPointer = HSector.notifyContacts;
                                         initAnimation();

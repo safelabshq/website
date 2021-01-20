@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:website/pages/home_page.dart';
-import 'package:website/pages/pressKit_page.dart';
 import 'package:website/widgets/navigationIndex.dart';
 
 enum CurrentPage {
@@ -60,7 +59,7 @@ class _NavigationBarState extends State<NavigationBar> {
                   NavigationIndex(
                     text: "Twitter",
                     width: 80,
-                    onTap: () async {
+                    onTap: () {
                       launch("https://twitter.com/SafeLabsHQ");
                     },
                   ),
@@ -69,11 +68,7 @@ class _NavigationBarState extends State<NavigationBar> {
                     text: "Press Kit",
                     width: 95,
                     onTap: () {
-                      if (widget.currentPage == CurrentPage.pressKit) {
-                        print("already in press kit page");
-                      } else {
-                        Navigator.pushNamed(context, PressKitPage.id);
-                      }
+                      launch('https://presskit.safelabs.app/');
                     },
                   ),
                   SizedBox(width: 10),

@@ -1,6 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:website/pages/pressKit_page.dart';
 import 'package:website/services/screenSizeIndicator.dart';
 import 'package:website/utils/constants.dart';
 import 'package:website/widgets/hookButton.dart';
@@ -10,22 +10,25 @@ class Hook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 30),
       width: double.infinity,
       color: kPrimaryBackgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          NavigationBar(
-            currentPage: CurrentPage.home,
-          ),
+          ScreenSizeIndicator.getScreenSize(context, Axis.horizontal) >= 600
+              ? NavigationBar(currentPage: CurrentPage.home)
+              : Container(),
           SizedBox(height: 60),
-          Text(
+          AutoSizeText(
             "Meet Safe.",
+            maxLines: 1,
             style: kHeader1,
           ),
           SizedBox(height: 25),
           Text(
             "A powerful tool for personal and community safety.",
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 33,
               fontFamily: "SF_Pro",
@@ -53,7 +56,7 @@ class Hook extends StatelessWidget {
                   inactiveColor: kTerciaryBackgroundColor,
                   activeColor: Color(0xffeeeeee),
                   onTap: () {
-                    Navigator.pushNamed(context, PressKitPage.id);
+                    launch('https://presskit.safelabs.app/');
                   },
                 ),
               ],

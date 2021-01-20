@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class TextIndex extends StatefulWidget {
   final bool isActive;
@@ -23,12 +22,33 @@ class _TextIndexState extends State<TextIndex> {
   String message = "fetching";
   bool active;
 
-  Future<Map<String, String>> fetchData() async {
-    String json = await rootBundle.loadString("json/features.json");
+  List<Map<String, String>> features = [
+    {
+      "header": "True Documentation",
+      "message":
+          "Both front and back camera will automatically start recording. Your exact location will also be documented."
+    },
+    {
+      "header": "Notifies Emergency Contacts",
+      "message":
+          "All of your emergency contacts (that you select) will be notified via SMS. Your emergency contacts have access to everything documented in case anything happens to you."
+    },
+    {
+      "header": "Uploaded to The Cloud",
+      "message":
+          "If anything is to happen to your phone, don’t worry. Everything recorded is immediately uploaded to the cloud for safe keeping."
+    },
+    {
+      "header": "Lowered Brightness",
+      "message":
+          "The phone’s brightness will automatically lower so it is harder for an individual to know you’re recording."
+    }
+  ];
 
+  Future<Map<String, String>> fetchData() async {
     return {
-      "header": jsonDecode(json)["data"][widget.index]["header"],
-      "message": jsonDecode(json)["data"][widget.index]["message"],
+      "header": features[widget.index]["header"],
+      "message": features[widget.index]["message"],
     };
   }
 

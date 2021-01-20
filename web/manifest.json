@@ -1,11 +1,11 @@
 {
-    "name": "website",
-    "short_name": "website",
+    "name": "Safe Labs",
+    "short_name": "Safe Labs",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A powerful tool for personal and community safety.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
