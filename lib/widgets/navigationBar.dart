@@ -68,7 +68,7 @@ class _NavigationBarState extends State<NavigationBar> {
                     text: "Press Kit",
                     width: 95,
                     onTap: () {
-                      launch('https://presskit.safelabs.app/');
+                      launch('https://safelabshq.github.io/press_kit/');
                     },
                   ),
                   SizedBox(width: 10),

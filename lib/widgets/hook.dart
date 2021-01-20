@@ -56,7 +56,7 @@ class Hook extends StatelessWidget {
                   inactiveColor: kTerciaryBackgroundColor,
                   activeColor: Color(0xffeeeeee),
                   onTap: () {
-                    launch('https://presskit.safelabs.app/');
+                    launch('https://safelabshq.github.io/press_kit/');
                   },
                 ),
               ],
