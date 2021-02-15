@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:website/utils/constants.dart';
 
 class HookButton extends StatefulWidget {
@@ -64,6 +65,7 @@ class _HookButtonState extends State<HookButton> with TickerProviderStateMixin {
     return GestureDetector(
       onTap: widget.onTap,
       child: MouseRegion(
+        cursor: SystemMouseCursors.click,
         onEnter: (PointerEvent _) async {
           setState(() {
             active = !active;

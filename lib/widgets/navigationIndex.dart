@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:website/utils/constants.dart';
 
 class NavigationIndex extends StatefulWidget {
@@ -20,6 +21,7 @@ class _NavigationIndexState extends State<NavigationIndex> {
     return GestureDetector(
       onTap: widget.onTap,
       child: MouseRegion(
+        cursor: SystemMouseCursors.click,
         onHover: (PointerEvent details) {
           setState(() {
             isActive = true;

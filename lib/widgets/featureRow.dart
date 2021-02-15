@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:website/services/screenSizeIndicator.dart';
 import 'package:website/widgets/barHighlight.dart';
 import 'package:website/widgets/textIndex.dart';
@@ -405,6 +406,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                       });
                                     },
                                     child: MouseRegion(
+                                      cursor: SystemMouseCursors.click,
                                       onEnter: (PointerEvent _) {
                                         setStateIfMounted(() {
                                           feat1 = true;
@@ -441,6 +443,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                       });
                                     },
                                     child: MouseRegion(
+                                      cursor: SystemMouseCursors.click,
                                       onEnter: (PointerEvent _) {
                                         setStateIfMounted(() {
                                           feat2 = true;
@@ -477,6 +480,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                       });
                                     },
                                     child: MouseRegion(
+                                      cursor: SystemMouseCursors.click,
                                       onEnter: (PointerEvent _) {
                                         setStateIfMounted(() {
                                           feat3 = true;
@@ -513,6 +517,7 @@ class _FeatureRowState extends State<FeatureRow> with TickerProviderStateMixin {
                                       });
                                     },
                                     child: MouseRegion(
+                                      cursor: SystemMouseCursors.click,
                                       onEnter: (PointerEvent _) {
                                         setStateIfMounted(() {
                                           feat4 = true;
